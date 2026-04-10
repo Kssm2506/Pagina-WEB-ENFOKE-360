@@ -18,8 +18,8 @@ export function Hero() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative w-full min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden bg-[linear-gradient(160deg,#0b5cc5_0%,#0f0f0f_50%)]">
-      <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 flex flex-col items-center text-center">
+    <section ref={containerRef} className="relative w-full min-h-screen flex flex-col items-center pt-40 pb-20 overflow-hidden bg-[linear-gradient(160deg,#0b5cc5_0%,#0f0f0f_50%)]">
+      <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 flex flex-col items-center text-center mt-10 md:mt-16">
         {/* Pill */}
         <div className="hero-elem mb-6 inline-flex items-center justify-center px-6 py-2 rounded-full border border-white/20 backdrop-blur-sm">
           <span className="text-white text-sm font-bold tracking-wide">
@@ -28,7 +28,7 @@ export function Hero() {
         </div>
 
         {/* Heading */}
-        <h1 className="hero-elem text-5xl md:text-[72px] leading-[1.05] font-bold text-white mb-6 tracking-tight">
+        <h1 className="hero-elem text-4xl md:text-5xl lg:text-[56px] leading-[1.1] font-bold text-white mb-6 tracking-tight">
           Impulsa tu negocio con<br />diseño web y marketing<br />digital
         </h1>
 

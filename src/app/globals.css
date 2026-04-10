@@ -1,42 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "TT Commons Pro", var(--font-geist-sans), sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
-
-  --color-background: #ffffff;
-  --color-foreground: #0f0f0f;
+  --font-sans: "TT Commons Pro", "TT Commons Sans", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-background: #0f0f0f;
+  --color-foreground: #ffffff;
   --color-primary: #0b5cc5;
   --color-primary-foreground: #ffffff;
-
-  --radius-lg: 0.5rem;
-  --radius-md: 0.375rem;
-  --radius-sm: 0.25rem;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .bg-primary {
-    background-color: var(--color-primary);
-  }
-  .text-primary {
-    color: var(--color-primary);
-  }
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 @layer base {
-  * {
-    border-color: #eaeaea;
-  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }

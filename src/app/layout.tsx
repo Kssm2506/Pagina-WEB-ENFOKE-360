@@ -1,28 +1,39 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Enfoke 360 | Agencia de Diseño y Desarrollo Web",
-  description: "Agencia de Diseño Web. Profesionales en diseño de sitios web para empresas, diseñadores UX/UI y SEO.",
+export const metadata = {
+  title: "Enfoke 360",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html
-      lang="es"
-      className={`${inter.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col font-sans bg-white text-[#0f0f0f] selection:bg-[#0b5cc5] selection:text-white">
+    <html lang="es" className="scroll-smooth">
+      <head>
+        <style dangerouslySetInnerHTML={{__html: `
+          @font-face {
+            font-family: 'TT Commons Pro';
+            src: local('TT Commons Pro Regular'), local('TT Commons Pro');
+            font-weight: 400;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: 'TT Commons Pro';
+            src: local('TT Commons Pro Bold'), local('TTCommonsPro-Bold');
+            font-weight: 700;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: 'TT Commons Pro';
+            src: local('TT Commons Pro Bold Italic'), local('TTCommonsPro-BoldItalic');
+            font-weight: 700;
+            font-style: italic;
+          }
+        `}} />
+      </head>
+      <body className="bg-[#0f0f0f] text-white selection:bg-[#0b5cc5] selection:text-white min-h-screen flex flex-col font-sans">
         {children}
       </body>
     </html>

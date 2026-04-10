@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Globe, Lightbulb, Search, Smartphone, ShoppingCart, BarChart } from "lucide-react";
+import Link from "next/link";
 
 export function Services() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -39,20 +40,35 @@ export function Services() {
   ];
 
   return (
-    <section ref={containerRef} id="servicios" className="py-24 bg-[#0f0f0f] text-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section ref={containerRef} id="servicios" className="py-24 relative overflow-hidden bg-[#0f0f0f]">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="mb-16 text-center max-w-3xl mx-auto">
-          <h4 className="text-[#0b5cc5] font-semibold tracking-widest uppercase text-sm mb-4">Nuestros Servicios</h4>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Estrategias digitales para hacer crecer tu negocio</h2>
+          <h4 className="text-[#0b5cc5] font-bold tracking-[0.15em] uppercase text-xs mb-4">Nuestros Servicios</h4>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">Estrategias digitales para hacer crecer tu negocio</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
-            <div key={i} className="service-card bg-neutral-900 border border-neutral-800 p-8 rounded-2xl hover:border-[#0b5cc5] transition-colors group cursor-pointer">
-              <div className="w-14 h-14 bg-[#0b5cc5]/10 rounded-xl flex items-center justify-center text-[#0b5cc5] mb-6 group-hover:scale-110 transition-transform">
-                <s.icon size={28} />
+            <div 
+              key={i} 
+              className="service-card relative bg-[#151515] border border-white/5 p-8 rounded-[24px] hover:border-[#0b5cc5]/50 group overflow-hidden transition-all duration-300"
+            >
+              {/* Subtle grid pattern background */}
+              <div 
+                className="absolute inset-0 opacity-10 pointer-events-none" 
+                style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}
+              ></div>
+              
+              <div className="relative z-10">
+                <div className="mb-8">
+                  <s.icon size={32} className="text-[#0b5cc5] group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">{s.title}</h3>
+                <p className="text-gray-400 leading-relaxed text-sm mb-8 font-light min-h-[60px]">{s.desc}</p>
+                <Link href="#contacto" className="inline-block text-xs font-bold tracking-widest uppercase text-white bg-[#0b5cc5]/10 border border-[#0b5cc5]/20 px-6 py-2.5 rounded-full hover:bg-[#0b5cc5] transition-colors">
+                  VER MÁS
+                </Link>
               </div>
-              <h3 className="text-xl font-bold mb-3">{s.title}</h3>
-              <p className="text-gray-400 leading-relaxed text-sm md:text-base">{s.desc}</p>
             </div>
           ))}
         </div>

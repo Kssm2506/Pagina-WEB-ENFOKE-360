@@ -15,21 +15,24 @@ export default function RootLayout({
         <style dangerouslySetInnerHTML={{__html: `
           @font-face {
             font-family: 'TT Commons Pro';
-            src: local('TT Commons Pro Regular'), local('TT Commons Pro');
+            src: url('/fonts/TTCommons-Regular.otf') format('opentype');
             font-weight: 400;
             font-style: normal;
+            font-display: swap;
           }
           @font-face {
             font-family: 'TT Commons Pro';
-            src: local('TT Commons Pro Bold'), local('TTCommonsPro-Bold');
+            src: url('/fonts/TTCommons-Bold.otf') format('opentype');
             font-weight: 700;
             font-style: normal;
+            font-display: swap;
           }
           @font-face {
             font-family: 'TT Commons Pro';
-            src: local('TT Commons Pro Bold Italic'), local('TTCommonsPro-BoldItalic');
+            src: url('/fonts/TTCommons-BoldItalic.otf') format('opentype');
             font-weight: 700;
             font-style: italic;
+            font-display: swap;
           }
         `}} />
       </head>

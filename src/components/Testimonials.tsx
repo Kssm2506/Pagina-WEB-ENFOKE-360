@@ -8,19 +8,19 @@ const testimonials = [
     id: 1,
     text: '"Contratar a Enfoke 360 para manejar nuestra publicidad fue un antes y un después. Redujimos costos por lead y aumentamos las ventas significativamente. Definitivamente una inversión que vale la pena."',
     name: "Sofía Hernández",
-    company: "FIT & GLOW BEAUTY"
+    company: "Fit & Glow Beauty"
   },
   {
     id: 2,
     text: '"Gracias al trabajo con Enfoke 360, nuestra empresa comenzó a aparecer en Google cuando antes no existíamos. Pasamos de cero contactos orgánicos a recibir cotizaciones todas las semanas."',
     name: "Carlos Méndez",
-    company: "JURADO INSURANCE AGENCY"
+    company: "Jurado Insurance Agency"
   },
   {
     id: 3,
     text: '"Enfoke 360 elevó por completo nuestra imagen en internet. La página web quedó moderna, rápida y enfocada en conversión. Desde el primer mes comenzamos a recibir más solicitudes de clientes."',
     name: "Laura Gómez",
-    company: "BELLA SKIN STUDIO"
+    company: "Bella Skin Studio"
   }
 ];
 
@@ -128,11 +128,12 @@ export function Testimonials() {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Background glowing orb */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#0b5cc5]/15 rounded-full blur-[150px] pointer-events-none" />
+      {/* Background eliminado — fondo limpio */}
       
       <div className="container relative z-10 mx-auto text-center mb-16 md:mb-20 px-6">
-        <h4 className="text-[#0b5cc5] font-bold tracking-[0.2em] uppercase text-xs mb-4">REPUTACIÓN</h4>
+        <div className="inline-flex items-center px-3 py-0.5 rounded-full border border-white/10 mb-4">
+          <span className="text-xs font-light tracking-wide text-white">Reputación</span>
+        </div>
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
           Lo que dicen nuestros clientes
         </h2>
@@ -171,7 +172,7 @@ export function Testimonials() {
                </div>
                <div>
                  <h4 className="text-white font-bold text-sm md:text-base">{item.name}</h4>
-                 <p className="text-[#0b5cc5] text-[10px] md:text-xs font-bold tracking-widest uppercase mt-0.5">{item.company}</p>
+                 <p className="text-[#0b5cc5] text-[11px] md:text-xs font-light tracking-wide mt-0.5">{item.company}</p>
                </div>
              </div>
           </div>

@@ -72,7 +72,9 @@ export function About() {
         
         {/* Right Side: Text Content */}
         <div className="flex flex-col justify-center">
-          <h4 className="about-elem text-blue-500 font-bold tracking-[0.1em] uppercase text-xs mb-5">QUIÉNES SOMOS</h4>
+          <div className="about-elem w-fit inline-flex items-center px-3 py-0.5 rounded-full border border-white/10 mb-5">
+            <span className="text-xs font-light tracking-normal text-white">Quiénes somos</span>
+          </div>
           
           <h2 className="about-elem text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
             Somos la agencia que construye marcas y negocios digitales
@@ -92,7 +94,7 @@ export function About() {
           <div className="about-elem mt-2">
             <Link 
               href="#contacto"
-              className="inline-block bg-gradient-to-r from-[#0b5cc5] to-[#0a4bb0] text-white px-8 py-3.5 rounded-full text-sm font-bold tracking-wide uppercase hover:opacity-90 transition-all shadow-[0_0_20px_rgba(11,92,197,0.3)] hover:shadow-[0_0_30px_rgba(11,92,197,0.5)]"
+              className="cta-anim inline-block text-white px-8 py-3.5 rounded-full text-sm font-light tracking-wide hover:opacity-90 shadow-[0_0_20px_rgba(11,92,197,0.3)] hover:shadow-[0_0_30px_rgba(11,92,197,0.5)]"
             >
               Agendar consulta gratuita
             </Link>

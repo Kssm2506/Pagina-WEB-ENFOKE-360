@@ -62,7 +62,7 @@ export function Stats() {
           {/* Stat 1 */}
           <div className="stat-item flex flex-col items-center justify-center text-center px-4">
             <h3 className="text-5xl md:text-6xl font-black text-white mb-2"><span className="stat-num" data-val="120">0</span>+</h3>
-            <p className="text-white/90 text-xs md:text-sm font-bold uppercase tracking-wider">
+            <p className="text-white/90 text-[15px] font-light tracking-wide">
               Proyectos y páginas<br/>web diseñadas
             </p>
           </div>
@@ -70,7 +70,7 @@ export function Stats() {
           {/* Stat 2 */}
           <div className="stat-item flex flex-col items-center justify-center text-center px-4">
             <h3 className="text-5xl md:text-6xl font-black text-white mb-2"><span className="stat-num" data-val="80">0</span>+</h3>
-            <p className="text-white/90 text-xs md:text-sm font-bold uppercase tracking-wider">
+            <p className="text-white/90 text-[15px] font-light tracking-wide">
               Clientes satisfechos<br/>en Latam y EE.UU.
             </p>
           </div>
@@ -78,7 +78,7 @@ export function Stats() {
           {/* Stat 3 */}
           <div className="stat-item flex flex-col items-center justify-center text-center px-4">
             <h3 className="text-5xl md:text-6xl font-black text-white mb-2"><span className="stat-num" data-val="4.9">0.0</span></h3>
-            <p className="text-white/90 text-xs md:text-sm font-bold uppercase tracking-wider">
+            <p className="text-white/90 text-[15px] font-light tracking-wide">
               Calificación promedio<br/>en satisfacción
             </p>
           </div>
@@ -86,7 +86,7 @@ export function Stats() {
           {/* Stat 4 */}
           <div className="stat-item flex flex-col items-center justify-center text-center px-4">
             <h3 className="text-5xl md:text-6xl font-black text-white mb-2"><span className="stat-num" data-val="100">0</span>%</h3>
-            <p className="text-white/90 text-xs md:text-sm font-bold uppercase tracking-wider">
+            <p className="text-white/90 text-[15px] font-light tracking-wide">
               Enfoque en resultados<br/>y crecimiento
             </p>
           </div>

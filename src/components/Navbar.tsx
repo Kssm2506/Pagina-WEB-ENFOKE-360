@@ -50,19 +50,23 @@ export function Navbar() {
 
           {/* Desktop Links */}
           <div className="hidden lg:flex items-center gap-10">
-            <Link href="#inicio" className="text-[15px] font-medium text-white hover:text-[#0b5cc5] transition-colors">Inicio</Link>
-            <Link href="#nosotros" className="text-[15px] font-medium text-white hover:text-[#0b5cc5] transition-colors">Nosotros</Link>
-            <div className="relative group flex items-center gap-1 cursor-pointer">
-              <span className="text-[15px] font-medium text-white hover:text-[#0b5cc5] transition-colors">Servicios</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
-            </div>
-            <Link href="#contacto" className="text-[15px] font-medium text-white hover:text-[#0b5cc5] transition-colors">Contacto</Link>
+            {['Inicio', 'Nosotros', 'Servicios', 'Contacto'].map((item) => (
+              <Link 
+                key={item}
+                href={`#${item.toLowerCase()}`} 
+                className="relative text-base font-light text-white group overflow-hidden py-1"
+              >
+                <span className="relative z-10">{item}</span>
+                {/* Underline effect */}
+                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#0b5cc5] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+              </Link>
+            ))}
           </div>
 
-          {/* Desktop Button - Also keep it visible on mobile next to menu? Nope, hide on very small to give space to toggle */}
+          {/* Desktop Button */}
           <Link
             href="#contacto"
-            className="hidden sm:inline-flex bg-gradient-to-r from-[#0b5cc5] to-[#0a4bb0] text-white px-7 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition-opacity ml-auto lg:ml-0 mr-12 lg:mr-0 relative z-[60]"
+            className="cta-anim hidden sm:inline-flex text-white px-8 py-2.5 rounded-full text-[15px] font-light hover:opacity-90 ml-auto lg:ml-0 mr-12 lg:mr-0 relative z-[60] shadow-[0_0_20px_rgba(11,92,197,0.3)]"
           >
             Agendar consulta
           </Link>

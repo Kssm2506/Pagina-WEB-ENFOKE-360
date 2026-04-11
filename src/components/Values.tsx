@@ -56,8 +56,10 @@ export function Values() {
           </div>
           
           <div className="relative z-10 max-w-lg">
-            <h4 className="text-[#0b5cc5] font-bold tracking-[0.1em] uppercase text-xs mb-4">NUESTRO VALOR</h4>
-            <h2 className="text-3xl md:text-4xl lg:text-[40px] font-bold tracking-tight text-white mb-6 leading-[1.1]">
+            <div className="w-fit inline-flex items-center px-3 py-0.5 rounded-full border border-white/10 mb-4">
+              <span className="text-xs font-light tracking-normal text-white">Nuestro valor</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-[40px] font-semibold tracking-tight text-white mb-6 leading-[1.1]">
               Estrategias que convierten. Resultados que hacen crecer tu negocio.
             </h2>
             <p className="text-gray-300 mb-8 leading-relaxed font-light text-sm md:text-base">
@@ -65,7 +67,7 @@ export function Values() {
             </p>
             <Link 
               href="/about"
-              className="inline-block bg-gradient-to-r from-[#0b5cc5] to-[#0a4bb0] text-white px-8 py-3.5 rounded-full text-xs font-bold tracking-wide uppercase hover:opacity-90 transition-all shadow-lg"
+              className="cta-anim inline-block text-white px-8 py-3.5 rounded-full text-xs font-light tracking-wide hover:opacity-90 shadow-lg"
             >
               Conoce cómo trabajamos
             </Link>
@@ -78,8 +80,10 @@ export function Values() {
           {/* Vision Card */}
           <div className="value-card flex-1 rounded-[2rem] bg-[#0b5cc5] p-8 md:p-10 flex flex-col justify-center relative overflow-hidden group">
             <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300"></div>
-            <h4 className="text-blue-200 font-bold tracking-[0.1em] uppercase text-xs mb-4 relative z-10">NUESTRA VISIÓN</h4>
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight relative z-10">
+            <div className="w-fit inline-flex items-center px-3 py-0.5 rounded-full border border-white/20 mb-4 relative z-10">
+              <span className="text-xs font-light tracking-normal text-white">Nuestra visión</span>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4 leading-tight relative z-10">
               Liderar la transformación digital de negocios en Estados Unidos y Latinoamérica.
             </h3>
             <p className="text-blue-100/90 text-sm md:text-base leading-relaxed relative z-10">
@@ -90,8 +94,10 @@ export function Values() {
           {/* Mission Card */}
           <div className="value-card flex-1 rounded-[2rem] bg-[#1a1a1a] border border-white/10 p-8 md:p-10 flex flex-col justify-center relative overflow-hidden group">
             <div className="absolute inset-0 bg-white/0 group-hover:bg-[#0b5cc5]/10 transition-colors duration-300"></div>
-            <h4 className="text-[#0b5cc5] font-bold tracking-[0.1em] uppercase text-xs mb-4 relative z-10">NUESTRA MISIÓN</h4>
-            <h3 className="text-2xl md:text-[28px] font-bold text-white mb-4 leading-tight relative z-10">
+            <div className="w-fit inline-flex items-center px-3 py-0.5 rounded-full border border-white/10 mb-4 relative z-10">
+              <span className="text-xs font-light tracking-normal text-white">Nuestra misión</span>
+            </div>
+            <h3 className="text-2xl md:text-[28px] font-semibold text-white mb-4 leading-tight relative z-10">
               Impulsar el crecimiento de empresas con estrategias digitales efectivas y medibles.
             </h3>
             <p className="text-gray-400 text-sm md:text-base leading-relaxed relative z-10">

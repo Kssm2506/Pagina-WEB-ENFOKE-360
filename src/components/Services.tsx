@@ -55,7 +55,9 @@ export function Services() {
 
       <div className="max-w-[1300px] mx-auto px-4 md:px-8 relative z-10">
         <div className="mb-14 text-center max-w-3xl mx-auto relative">
-          <h4 className="text-[#0b5cc5] font-bold tracking-[0.15em] uppercase text-xs mb-4 drop-shadow-[0_0_10px_rgba(11,92,197,0.8)]">Nuestros Servicios</h4>
+          <div className="inline-flex items-center px-3 py-0.5 rounded-full border border-white/10 mb-4">
+            <span className="text-xs font-light tracking-normal text-white">Nuestros Servicios</span>
+          </div>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">Estrategias digitales para hacer crecer tu negocio</h2>
         </div>
         
@@ -92,9 +94,9 @@ export function Services() {
                 <div className="mt-auto inline-flex">
                   <Link 
                     href="#contacto" 
-                    className="inline-block text-[11px] font-bold tracking-widest uppercase text-white bg-gradient-to-r from-[#0b5cc5] to-[#08428c] px-7 py-3 rounded-full hover:opacity-90 transition-opacity"
+                    className="cta-anim inline-block text-[13px] font-light tracking-wide text-white px-5 py-2.5 rounded-full hover:opacity-90"
                   >
-                    VER MÁS
+                    Ver más
                   </Link>
                 </div>
               </div>

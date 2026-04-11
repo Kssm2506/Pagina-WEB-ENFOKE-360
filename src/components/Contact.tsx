@@ -54,7 +54,7 @@ export function Contact() {
 
           <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
             <div className="space-y-1">
-              <label className="text-xs font-bold text-gray-500 uppercase tracking-widest">Nombre y Apellido</label>
+              <label className="text-[13px] font-light text-gray-400 tracking-wide">Nombre y apellido</label>
               <input 
                 type="text" 
                 placeholder="Ej. Juan Pérez" 
@@ -64,7 +64,7 @@ export function Contact() {
             </div>
             
             <div className="space-y-1">
-              <label className="text-xs font-bold text-gray-500 uppercase tracking-widest">Correo Electrónico</label>
+              <label className="text-[13px] font-light text-gray-400 tracking-wide">Correo electrónico</label>
               <input 
                 type="email" 
                 placeholder="hola@empresa.com" 
@@ -74,7 +74,7 @@ export function Contact() {
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-bold text-gray-500 uppercase tracking-widest">¿Cómo podemos ayudarte?</label>
+              <label className="text-[13px] font-light text-gray-400 tracking-wide">¿Cómo podemos ayudarte?</label>
               <textarea 
                 rows={3}
                 placeholder="Cuéntanos un poco sobre tu negocio..." 
@@ -85,7 +85,7 @@ export function Contact() {
 
             <button 
               type="submit" 
-              className="w-full mt-4 bg-gradient-to-r from-[#0b5cc5] to-[#08428c] text-white font-bold text-[13px] tracking-widest uppercase py-4 rounded-xl hover:shadow-[0_0_20px_rgba(11,92,197,0.4)] hover:-translate-y-1 transition-all duration-300"
+              className="cta-anim w-full mt-4 text-white py-4 rounded-xl shadow-[0_0_20px_rgba(11,92,197,0.4)]"
             >
               Contactar a un experto
             </button>

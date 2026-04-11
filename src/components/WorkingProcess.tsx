@@ -36,17 +36,19 @@ export function WorkingProcess() {
   }, []);
 
   const steps = [
-    { title: "Consulta gratuita", desc: "Hablamos sobre tu negocio, necesidades y objetivos para definir la mejor estrategia de crecimiento digital.", btn: "AGENDAR AHORA", icon: SlBubble },
-    { title: "Estrategia y propuesta", desc: "Creamos un plan personalizado que incluye web, SEO, publicidad y redes sociales según lo que tu negocio necesita para atraer clientes.", btn: "VER SERVICIOS", icon: SlScreenDesktop },
-    { title: "Implementación y resultados", desc: "Construimos y ejecutamos todo: diseño web, campañas publicitarias, SEO y contenido. Tú ves los resultados en ventas y clientes.", btn: "SOLICITAR COTIZACIÓN", icon: SlLayers },
-    { title: "Optimización continua", desc: "Analizamos métricas mensuales y optimizamos para mejorar resultados, reducir costos y escalar tu negocio.", btn: "MÁS INFORMACIÓN", icon: SlChart }
+    { title: "Consulta gratuita", desc: "Hablamos sobre tu negocio, necesidades y objetivos para definir la mejor estrategia de crecimiento digital.", btn: "Agendar ahora", icon: SlBubble },
+    { title: "Estrategia y propuesta", desc: "Creamos un plan personalizado que incluye web, SEO, publicidad y redes sociales según lo que tu negocio necesita para atraer clientes.", btn: "Ver servicios", icon: SlScreenDesktop },
+    { title: "Implementación y resultados", desc: "Construimos y ejecutamos todo: diseño web, campañas publicitarias, SEO y contenido. Tú ves los resultados en ventas y clientes.", btn: "Solicitar cotización", icon: SlLayers },
+    { title: "Optimización continua", desc: "Analizamos métricas mensuales y optimizamos para mejorar resultados, reducir costos y escalar tu negocio.", btn: "Más información", icon: SlChart }
   ];
 
   return (
     <section ref={containerRef} className="py-24 relative bg-[#0f0f0f]">
       <div className="max-w-[1300px] mx-auto px-6">
         <div className="mb-16 text-center max-w-3xl mx-auto">
-          <h4 className="text-[#0b5cc5] font-bold tracking-[0.15em] uppercase text-xs mb-4">CÓMO TRABAJAMOS</h4>
+          <div className="inline-flex items-center px-3 py-0.5 rounded-full border border-white/10 mb-4">
+            <span className="text-xs font-light tracking-normal text-white">Cómo trabajamos</span>
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-6">Comienza a atraer clientes en internet en solo 4 pasos</h2>
         </div>
         
@@ -73,7 +75,7 @@ export function WorkingProcess() {
               <div className="mt-auto pb-4">
                 <Link 
                   href={i === 1 ? "#servicios" : "#contacto"} 
-                  className="inline-block text-[11px] font-bold tracking-widest uppercase text-white bg-gradient-to-r from-[#0b5cc5] to-[#08428c] hover:opacity-90 transition-opacity px-6 py-3 rounded-full shadow-[0_0_15px_rgba(11,92,197,0.3)]"
+                  className="cta-anim inline-block text-[11px] font-light tracking-widest text-white px-6 py-3 rounded-full shadow-[0_0_15px_rgba(11,92,197,0.3)]"
                 >
                   {s.btn}
                 </Link>

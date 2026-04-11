@@ -16,5 +16,16 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Mejoras para scroll en mobile */
+    touch-action: pan-y;
+    overscroll-behavior-y: contain;
+    letter-spacing: 0.015em;
+  }
+}
+
+@layer components {
+  .cta-anim {
+    @apply relative overflow-hidden transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] px-6 text-[18px] font-extralight;
+    background: linear-gradient(135deg, #073c85 0%, #0f0f0f 100%);
   }
 }

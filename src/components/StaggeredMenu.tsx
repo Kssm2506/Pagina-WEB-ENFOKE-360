@@ -2,6 +2,7 @@
 "use client";
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import './StaggeredMenu.css';
 
 export const StaggeredMenu = ({
@@ -279,9 +280,18 @@ export const StaggeredMenu = ({
     if (target) {
       onMenuOpen?.();
       playOpen();
+      // Bloquear scroll
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      // Si usas Lenis u otro scroll suave, esto suele ser necesario
+      document.body.classList.add('menu-open');
     } else {
       onMenuClose?.();
       playClose();
+      // Restaurar scroll
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.classList.remove('menu-open');
     }
     animateIcon(target);
     animateColor(target);
@@ -295,8 +305,19 @@ export const StaggeredMenu = ({
       playClose();
       animateIcon(false);
       animateColor(false);
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.classList.remove('menu-open');
     }
   }, [playClose, animateIcon, animateColor, onMenuClose]);
+
+  React.useEffect(() => {
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.classList.remove('menu-open');
+    };
+  }, []);
 
   React.useEffect(() => {
     if (!closeOnClickAway || !open) return;
@@ -313,8 +334,10 @@ export const StaggeredMenu = ({
     };
 
     document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside, { passive: true });
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
     };
   }, [closeOnClickAway, open, closeMenu]);
 
@@ -337,7 +360,6 @@ export const StaggeredMenu = ({
         })()}
       </div>
       <header className="staggered-menu-header" aria-label="Main navigation header">
-        {/* Float right, using standard hamburger bars */}
         <div className="!ml-auto">
           <button
             ref={toggleBtnRef}
@@ -357,7 +379,14 @@ export const StaggeredMenu = ({
         </div>
       </header>
 
-      <aside id="staggered-menu-panel" ref={panelRef} className="staggered-menu-panel" aria-hidden={!open} style={{ backgroundColor: '#131313', color: 'white' }}>
+      <aside 
+        id="staggered-menu-panel" 
+        ref={panelRef} 
+        className="staggered-menu-panel" 
+        aria-hidden={!open} 
+        style={{ backgroundColor: '#131313', color: 'white' }}
+        data-lenis-prevent
+      >
         <div className="sm-panel-inner mt-4">
           <ul className="sm-panel-list" role="list" data-numbering={displayItemNumbering || undefined}>
             {items && items.length ? (
@@ -372,12 +401,15 @@ export const StaggeredMenu = ({
           </ul>
           {displaySocials && socialItems && socialItems.length > 0 && (
             <div className="sm-socials" aria-label="Social links">
-              <h3 className="sm-socials-title">Redes Sociales</h3>
+              <div className="inline-flex items-center px-3 py-0.5 rounded-full border border-white/10 mb-6">
+                <span className="text-[11px] font-light tracking-normal text-white">Redes Sociales</span>
+              </div>
               <ul className="sm-socials-list" role="list">
                 {socialItems.map((s, i) => (
                   <li key={s.label + i} className="sm-socials-item">
-                    <a href={s.link} target="_blank" rel="noopener noreferrer" className="sm-socials-link !text-gray-400 hover:!text-white">
-                      {s.label}
+                    <a href={s.link} target="_blank" rel="noopener noreferrer" className="sm-socials-link flex items-center justify-center !text-gray-400 hover:!text-[#0b5cc5]">
+                      {s.label.toLowerCase().includes('instagram') && <FaInstagram className="text-3xl" />}
+                      {s.label.toLowerCase().includes('whatsapp') && <FaWhatsapp className="text-3xl" />}
                     </a>
                   </li>
                 ))}

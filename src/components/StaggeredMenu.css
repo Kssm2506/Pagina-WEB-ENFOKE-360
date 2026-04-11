@@ -140,6 +140,8 @@
   flex-direction: column;
   padding: 6em 2em 2em 2em;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* momentum scroll en iOS */
+  overscroll-behavior: contain;      /* evitar que el scroll se propague al body */
   z-index: 10;
   pointer-events: auto;
 }
@@ -184,8 +186,8 @@
 }
 
 .sm-socials {
-  margin-top: auto;
-  padding-top: 2rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -270,7 +272,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 1.25rem;
 }
 
 .sm-panel-item {

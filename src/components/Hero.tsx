@@ -32,8 +32,8 @@ export function Hero() {
       
       <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 flex flex-col items-center text-center mt-4 md:mt-16">
         {/* Pill */}
-        <div className="hero-elem mb-6 inline-flex items-center justify-center px-6 py-2 rounded-full border border-white/20 backdrop-blur-sm bg-white/5">
-          <span className="text-white text-sm font-bold tracking-wide">
+        <div className="hero-elem mb-6 inline-flex items-center justify-center px-4 py-1 rounded-full border border-white/10 bg-transparent">
+          <span className="text-white text-[13px] font-light tracking-normal">
             Impulsamos el crecimiento de tu negocio
           </span>
         </div>
@@ -54,13 +54,13 @@ export function Hero() {
         <div className="hero-elem flex flex-col sm:flex-row items-center gap-6">
           <Link 
             href="#contacto"
-            className="bg-gradient-to-r from-[#0b5cc5] to-[#0a4bb0] text-white px-10 py-4 rounded-full text-base font-bold hover:opacity-90 transition-all shadow-[0_0_30px_rgba(11,92,197,0.3)] hover:shadow-[0_0_40px_rgba(11,92,197,0.5)]"
+            className="cta-anim inline-block text-white px-10 py-4 rounded-full text-base font-light hover:opacity-90 shadow-[0_0_30px_rgba(11,92,197,0.3)] hover:shadow-[0_0_40px_rgba(11,92,197,0.5)]"
           >
             Agendar consulta gratuita
           </Link>
           <Link 
             href="#servicios"
-            className="bg-transparent border border-white/30 text-white px-10 py-4 rounded-full text-base font-bold hover:bg-white hover:text-black transition-all"
+            className="bg-transparent border border-white/30 text-white px-10 py-4 rounded-full text-base font-light hover:bg-white hover:text-black transition-all"
           >
             Ver servicios
           </Link>

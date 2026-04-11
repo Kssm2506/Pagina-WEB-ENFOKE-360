@@ -47,7 +47,7 @@ export function About() {
   }, []);
 
   return (
-    <section ref={containerRef} id="nosotros" className="py-24 relative bg-[#0f0f0f] z-10">
+    <section ref={containerRef} id="nosotros" className="pt-12 pb-24 md:py-24 relative bg-[#0f0f0f] z-10">
       
       {/* Container */}
       <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10">

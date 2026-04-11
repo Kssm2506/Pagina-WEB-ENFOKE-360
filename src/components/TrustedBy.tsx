@@ -1,11 +1,13 @@
 "use client";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function TrustedBy() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       // Fade entrance
       gsap.fromTo(
@@ -46,7 +48,7 @@ export function TrustedBy() {
         </h3>
 
         {/* Logos container */}
-        <div className="relative z-10 flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-60">
+        <div className="relative z-10 grid grid-cols-2 md:flex md:flex-wrap justify-center items-center place-items-center gap-12 md:gap-20 opacity-60">
           
           {/* Logo 1: Generic Company or Meta */}
           <div className="flex items-center gap-2 hover:opacity-100 transition-opacity cursor-default">

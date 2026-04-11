@@ -26,11 +26,11 @@ export function Hero() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative w-full min-h-screen flex flex-col items-center pt-40 pb-20 overflow-hidden bg-[#0f0f0f]">
+    <section ref={containerRef} className="relative w-full min-h-screen flex flex-col items-center pt-28 md:pt-40 pb-20 overflow-hidden bg-[#0f0f0f]">
       {/* Gradient Entrance Effect Background */}
       <div className="hero-glow absolute inset-0 bg-[linear-gradient(160deg,#0b5cc5_0%,#0f0f0f_50%)] pointer-events-none z-0" />
       
-      <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 flex flex-col items-center text-center mt-10 md:mt-16">
+      <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 flex flex-col items-center text-center mt-4 md:mt-16">
         {/* Pill */}
         <div className="hero-elem mb-6 inline-flex items-center justify-center px-6 py-2 rounded-full border border-white/20 backdrop-blur-sm bg-white/5">
           <span className="text-white text-sm font-bold tracking-wide">

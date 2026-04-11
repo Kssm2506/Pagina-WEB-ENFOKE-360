@@ -1,4 +1,5 @@
 import "./globals.css";
+import { LenisProvider } from "@/components/LenisProvider";
 
 export const metadata = {
   title: "Enfoke 360",
@@ -10,7 +11,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className="scroll-smooth">
+    <html lang="es">
       <head>
         <style dangerouslySetInnerHTML={{__html: `
           @font-face {
@@ -37,7 +38,9 @@ export default function RootLayout({
         `}} />
       </head>
       <body className="bg-[#0f0f0f] text-white selection:bg-[#0b5cc5] selection:text-white min-h-screen flex flex-col font-sans">
-        {children}
+        <LenisProvider>
+          {children}
+        </LenisProvider>
       </body>
     </html>
   );

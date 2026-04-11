@@ -1,23 +1,41 @@
 "use client";
-import Link from "next/link";
 import { useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function Footer() {
   // Calcula la altura real del footer y la expone como CSS var al spacer
   useEffect(() => {
+    const footer = document.getElementById("site-footer");
+    if (!footer) return;
+
     const measure = () => {
-      const footer = document.getElementById("site-footer");
-      if (footer) {
-        const h = footer.offsetHeight;
-        document.documentElement.style.setProperty("--footer-h", `${h}px`);
-        // También actualiza el spacer directamente por si acaso
-        const spacer = document.getElementById("footer-spacer");
-        if (spacer) spacer.style.height = `${h}px`;
-      }
+      const h = footer.offsetHeight;
+      document.documentElement.style.setProperty("--footer-h", `${h}px`);
+      const spacer = document.getElementById("footer-spacer");
+      if (spacer) spacer.style.height = `${h}px`;
+      
+      // Crucial: Refrescar ScrollTrigger cuando cambia la altura del layout
+      ScrollTrigger.refresh();
     };
+
+    // Medida inicial y tras carga de imágenes
     measure();
+    
+    // ResizeObserver para cambios dinámicos (responsive, etc)
+    const resizeObserver = new ResizeObserver(() => {
+      // Usamos requestAnimationFrame para evitar errores de loop en ResizeObserver
+      requestAnimationFrame(measure);
+    });
+    resizeObserver.observe(footer);
+
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    return () => {
+      window.removeEventListener("resize", measure);
+      resizeObserver.disconnect();
+    };
   }, []);
 
   return (
@@ -28,12 +46,24 @@ export function Footer() {
       aria-label="Footer"
     >
       {/* Logo grande centrado — el punto focal del reveal */}
-      <div className="w-full flex items-center justify-center px-6 pt-14 pb-5">
-        <img
+      <div className="w-full flex flex-col items-center justify-center px-6 pt-14 pb-12">
+        <Image
           src="/logo.webp"
           alt="Enfoke 360"
-          className="w-[72vw] max-w-[620px] md:w-[52vw] h-auto object-contain select-none"
-          draggable={false}
+          width={600}
+          height={180}
+          priority
+          className="w-[55vw] max-w-[400px] md:w-[35vw] h-auto object-contain select-none"
+          onLoad={() => {
+            const footer = document.getElementById("site-footer");
+            if (footer) {
+              const h = footer.offsetHeight;
+              document.documentElement.style.setProperty("--footer-h", `${h}px`);
+              const spacer = document.getElementById("footer-spacer");
+              if (spacer) spacer.style.height = `${h}px`;
+              ScrollTrigger.refresh();
+            }
+          }}
         />
       </div>
 

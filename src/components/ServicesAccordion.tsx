@@ -20,18 +20,18 @@ const icons: IconType = {
 const services = [
   {
     id: "diseno-web",
-    title: "Diseño Web",
-    shortDesc: "Páginas web modernas, rápidas y optimizadas para convertir visitantes en clientes.",
-    fullDesc: "Creamos páginas web modernas, rápidas y optimizadas para convertir visitantes en clientes. Tu negocio tendrá una presencia digital sólida y confiable. Cada sitio está diseñado para posicionar tu marca, atraer clientes y aumentar ventas.",
+    title: "Diseño Web Profesional",
+    shortDesc: "Diseño web optimizado para atraer clientes y aumentar tus ventas.",
+    fullDesc: "Agencia de diseño web profesional adaptado a tu marca y a los objetivos de tu negocio. Cada página está optimizada para posicionamiento SEO, velocidad, dispositivos móviles y conversión, garantizando una experiencia visual impactante y orientada a resultados.",
     features: [
-      "Diseño 100% personalizado",
-      "Compatible con móvil, tablet y computadora",
-      "Velocidad de carga optimizada",
-      "Integración con WhatsApp y formularios",
-      "Certificado SSL incluido",
-      "SEO básico incluido"
+      "Optimización para móviles (Responsive)",
+      "Arquitectura orientada a conversión",
+      "Integración con WhatsApp y redes",
+      "Alta velocidad de carga y SSL",
+      "Copywriting persuasivo y SEO",
+      "Google Analytics y Pixel de Meta"
     ],
-    price: "Desde $599"
+    price: "Solicitar cotización"
   },
   {
     id: "tienda-online",

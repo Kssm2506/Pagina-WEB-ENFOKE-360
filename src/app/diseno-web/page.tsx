@@ -3,7 +3,9 @@ import { DisenoWebHero } from "@/components/DisenoWebHero";
 import { DisenoWebFeatures } from "@/components/DisenoWebFeatures";
 import { TrustedBy } from "@/components/TrustedBy";
 import { Stats } from "@/components/Stats";
-import { Values } from "@/components/Values";
+import { WorkingProcess } from "@/components/WorkingProcess";
+import { Comparison } from "@/components/Comparison";
+import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
 export default function DisenoWebPage() {
@@ -22,12 +24,17 @@ export default function DisenoWebPage() {
           <DisenoWebFeatures />
         </div>
 
-        <div className="relative z-10 bg-[#0f0f0f] py-24">
+        <Comparison />
+        
+        <WorkingProcess />
+
+        <div className="relative z-10 bg-[#0f0f0f] py-12">
           <TrustedBy />
         </div>
 
         <Stats />
-        <Values />
+        
+        <Contact />
       </main>
 
       <div

@@ -55,9 +55,9 @@ export function Nosotros({ showBadge = false }: NosotrosProps) {
                    </defs>
                    <circle cx="50" cy="50" r="38" className="fill-[#0b5cc5]/80" />
                    <text className="text-[8px] font-extralight uppercase tracking-[0.25em] fill-white/80">
-                     <textPath xlinkHref="#circlePath">
-                       Premium Services • Enfoke 360 Agency • 
-                     </textPath>
+<textPath xlinkHref="#circlePath">
+                        Sobre Nosotros • Premium Services • 
+                      </textPath>
                    </text>
                  </svg>
                  <div className="absolute inset-0 flex items-center justify-center">

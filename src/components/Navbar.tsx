@@ -1,10 +1,16 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import StaggeredMenu from "./StaggeredMenu";
 
 export function Navbar() {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   const navRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
 
@@ -41,7 +47,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav ref={navRef} className={`fixed w-full top-0 z-50 py-4 px-6 md:px-12 transition-all duration-300 ${scrolled ? "bg-[#0f0f0f]/80 backdrop-blur-lg border-b border-white/5" : "bg-transparent"}`}>
+      <nav ref={navRef} className={`fixed w-full top-0 z-50 py-4 px-6 md:px-12 transition-all duration-300 ${scrolled ? "bg-[#0f0f0f]/80 backdrop-blur-lg  border-white/5" : "bg-transparent"}`}>
         <div className="w-full max-w-[1400px] mx-auto flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center relative z-[60]">
@@ -51,9 +57,9 @@ export function Navbar() {
           {/* Desktop Links */}
           <div className="hidden lg:flex items-center gap-10">
             {menuItems.map((item) => (
-              <Link 
+              <Link
                 key={item.label}
-                href={item.link} 
+                href={item.link}
                 className="relative text-base font-light text-white group overflow-hidden py-1"
               >
                 <span className="relative z-10">{item.label}</span>

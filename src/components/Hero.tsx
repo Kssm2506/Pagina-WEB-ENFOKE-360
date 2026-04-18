@@ -54,7 +54,7 @@ export function Hero() {
         <div className="hero-elem flex flex-col sm:flex-row items-center gap-6">
           <Link 
             href="#contacto"
-            className="cta-anim inline-block text-white px-10 py-4 rounded-full text-base font-light hover:opacity-90 shadow-[0_0_30px_rgba(11,92,197,0.3)] hover:shadow-[0_0_40px_rgba(11,92,197,0.5)]"
+            className="cta-anim inline-block text-white px-10 py-4 rounded-full text-base font-light bg-gradient-to-r from-[#0b5cc5] to-[#3b82f6] hover:opacity-90 shadow-[0_0_30px_rgba(11,92,197,0.3)] hover:shadow-[0_0_40px_rgba(11,92,197,0.5)]"
           >
             Agendar consulta gratuita
           </Link>

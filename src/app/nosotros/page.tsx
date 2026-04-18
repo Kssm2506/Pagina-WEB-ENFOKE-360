@@ -21,7 +21,8 @@ export default function NosotrosPage() {
         <Navbar />
         <NosotrosHero />
 
-        <div className="relative z-10 bg-[#0f0f0f] -mt-20">
+        <div className="relative z-10 bg-[#0f0f0f] -mt-10">
+          <div className="h-24 md:h-32" />
           <Nosotros showBadge={true} />
           <Comparison />
         </div>

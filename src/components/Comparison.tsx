@@ -1,33 +1,8 @@
 "use client";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import { SlCheck, SlClose } from "react-icons/sl";
 
 export function Comparison() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".comparison-card",
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 80%",
-          }
-        }
-      );
-    }, containerRef);
-    return () => ctx.revert();
-  }, []);
-
   const features = [
     { title: "Diseño Web", others: "Plantillas genéricas y lentas", enfoke: "Diseño único, rápido y premium" },
     { title: "Enfoque principal", others: "Solo que se vea 'bonito'", enfoke: "Estrategia técnica para vender más" },
@@ -38,7 +13,7 @@ export function Comparison() {
   ];
 
   return (
-    <section ref={containerRef} className="py-24 md:py-32 bg-[#0f0f0f] relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-[#0f0f0f] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#0b5cc5] opacity-5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -53,20 +28,26 @@ export function Comparison() {
           </h2>
         </div>
 
-        <div className="comparison-card overflow-hidden rounded-[2rem] border border-white/5 bg-[#141414]/40 backdrop-blur-xl shadow-2xl">
+        <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="comparison-card overflow-hidden rounded-[2rem] border border-white/5 bg-[#141414]/40 backdrop-blur-xl shadow-2xl"
+          >
           
           {/* Header Row */}
           <div className="grid grid-cols-1 md:grid-cols-3 border-b border-white/10">
-            <div className="p-6 md:p-8 bg-black/20 flex items-center justify-center md:justify-start">
-              <span className="text-white/40 text-sm font-light uppercase tracking-widest">Características</span>
+            <div className="p-6 md:p-8 bg-black/20 flex items-center justify-center">
+              <span className="text-white/40 text-sm font-light">Características</span>
             </div>
             <div className="p-6 md:p-8 border-l border-white/5 flex flex-col items-center justify-center text-center">
-              <span className="text-gray-500 text-sm font-medium uppercase tracking-widest mb-1">Otras Agencias</span>
+              <span className="text-gray-500 text-sm font-medium mb-1">Otras Agencias</span>
               <div className="w-8 h-1 bg-gray-800 rounded-full"></div>
             </div>
             <div className="p-6 md:p-8 border-l border-white/5 bg-[#0b5cc5]/10 flex flex-col items-center justify-center text-center">
-              <span className="text-[#0b5cc5] text-sm font-bold uppercase tracking-widest mb-1">Enfoke 360</span>
-              <div className="w-12 h-1 bg-[#0b5cc5] rounded-full shadow-[0_0_10px_#0b5cc5]"></div>
+              <span className="text-sm font-bold mb-1 bg-gradient-to-r from-[#0b5cc5] to-[#3b82f6] bg-clip-text text-transparent">Enfoke 360</span>
+              <div className="w-12 h-1 bg-gradient-to-r from-[#0b5cc5] to-[#3b82f6] rounded-full shadow-[0_0_10px_rgba(11,92,197,0.5)]"></div>
             </div>
           </div>
 
@@ -96,7 +77,7 @@ export function Comparison() {
             </div>
           ))}
 
-        </div>
+        </motion.div>
 
         {/* Bottom CTA hint */}
         <p className="text-center mt-12 text-gray-500 font-light text-sm italic">

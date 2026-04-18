@@ -66,7 +66,7 @@ export function Values() {
               En Enfoke 360 diseñamos y ejecutamos estrategias digitales enfocadas en resultados reales. Desde diseño web profesional y SEO hasta publicidad en Meta y Google Ads, cada acción está pensada para atraer clientes, impulsar ventas y escalar tu negocio de forma sostenible.
             </p>
             <Link 
-              href="/about"
+              href="/nosotros"
               className="cta-anim inline-block text-white px-8 py-3.5 rounded-full text-xs font-light tracking-wide hover:opacity-90 shadow-lg"
             >
               Conoce cómo trabajamos

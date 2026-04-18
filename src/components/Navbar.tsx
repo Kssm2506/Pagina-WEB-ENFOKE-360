@@ -28,15 +28,15 @@ export function Navbar() {
   }, []);
 
   const menuItems = [
-    { label: 'Inicio', ariaLabel: 'Ir al inicio', link: '#inicio' },
-    { label: 'Nosotros', ariaLabel: 'Sobre nosotros', link: '#nosotros' },
-    { label: 'Servicios', ariaLabel: 'Ver servicios', link: '#servicios' },
-    { label: 'Contacto', ariaLabel: 'Contáctanos', link: '#contacto' }
+    { label: 'Inicio', ariaLabel: 'Ir al inicio', link: '/' },
+    { label: 'Nosotros', ariaLabel: 'Sobre nosotros', link: '/nosotros' },
+    { label: 'Servicios', ariaLabel: 'Ver servicios', link: '/#servicios' },
+    { label: 'Contacto', ariaLabel: 'Contáctanos', link: '/#contacto' }
   ];
 
   const socialItems = [
     { label: 'Instagram', link: 'https://instagram.com' },
-    { label: 'WhatsApp', link: '#contacto' }
+    { label: 'WhatsApp', link: '/#contacto' }
   ];
 
   return (
@@ -50,13 +50,13 @@ export function Navbar() {
 
           {/* Desktop Links */}
           <div className="hidden lg:flex items-center gap-10">
-            {['Inicio', 'Nosotros', 'Servicios', 'Contacto'].map((item) => (
+            {menuItems.map((item) => (
               <Link 
-                key={item}
-                href={`#${item.toLowerCase()}`} 
+                key={item.label}
+                href={item.link} 
                 className="relative text-base font-light text-white group overflow-hidden py-1"
               >
-                <span className="relative z-10">{item}</span>
+                <span className="relative z-10">{item.label}</span>
                 {/* Underline effect */}
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#0b5cc5] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
               </Link>

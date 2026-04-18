@@ -73,10 +73,10 @@ export function Footer() {
       {/* Links y Sociales */}
       <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
         <nav className="flex flex-wrap gap-6 text-sm text-white/70 font-light" aria-label="Footer navigation">
-          <Link href="#inicio" className="hover:text-white transition-colors">Inicio</Link>
-          <Link href="#nosotros" className="hover:text-white transition-colors">Nosotros</Link>
-          <Link href="#servicios" className="hover:text-white transition-colors">Servicios</Link>
-          <Link href="#contacto" className="hover:text-white transition-colors">Contacto</Link>
+          <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+          <Link href="/nosotros" className="hover:text-white transition-colors">Nosotros</Link>
+          <Link href="/#servicios" className="hover:text-white transition-colors">Servicios</Link>
+          <Link href="/#contacto" className="hover:text-white transition-colors">Contacto</Link>
         </nav>
         <div className="flex items-center gap-5">
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"

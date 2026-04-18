@@ -1,7 +1,7 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import Image from "next/image";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const testimonials = [
   {
@@ -25,178 +25,87 @@ const testimonials = [
 ];
 
 export function Testimonials() {
-  const [indices, setIndices] = useState([0, 1, 2]);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  const rotateIndicesRight = () => {
-    setIndices((prev) => {
-      const copy = [...prev];
-      const last = copy.pop()!;
-      copy.unshift(last);
-      return copy;
-    });
-  };
-
-  const rotateIndicesLeft = () => {
-    setIndices((prev) => {
-      const copy = [...prev];
-      const first = copy.shift()!;
-      copy.push(first);
-      return copy;
-    });
-  };
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    // Tweak offsets so wide cards don't overlap too much
-    const xOffset = isMobile ? 220 : 400; 
-    const sideScale = isMobile ? 0.75 : 0.8;
-    const activeScale = 1;
-    const sideRotation = isMobile ? 10 : 25;
-
-    indices.forEach((originalIdx, currentPos) => {
-      const card = cardsRef.current[originalIdx];
-      if (!card) return;
-
-      let x = 0;
-      let scale = 0.5;
-      let opacity = 0;
-      let rotateY = 0;
-      let zIndex = 0;
-      let blur = 10;
-      let grayscale = 100;
-
-      if (currentPos === 0) {
-        x = -xOffset;
-        scale = sideScale;
-        opacity = 0.3;
-        rotateY = sideRotation;
-        zIndex = 5;
-        blur = isMobile ? 3 : 5;
-      } else if (currentPos === 1) {
-        x = 0;
-        scale = activeScale;
-        opacity = 1;
-        rotateY = 0;
-        zIndex = 10;
-        blur = 0;
-        grayscale = 0;
-      } else if (currentPos === 2) {
-        x = xOffset;
-        scale = sideScale;
-        opacity = 0.3;
-        rotateY = -sideRotation;
-        zIndex = 5;
-        blur = isMobile ? 3 : 5;
-      }
-
-      gsap.to(card, {
-        x,
-        scale,
-        opacity,
-        rotateY,
-        zIndex,
-        filter: `blur(${blur}px) grayscale(${grayscale}%)`,
-        duration: 0.8,
-        ease: "expo.out",
-        perspective: 1000,
-      });
-    });
-  }, [indices]);
-
-  const touchStartX = useRef<number | null>(null);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX.current - touchEndX;
-
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) rotateIndicesLeft();
-      else rotateIndicesRight();
-    }
-    touchStartX.current = null;
-  };
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".testimonial-card",
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 85%",
+          }
+        }
+      );
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section 
-      className="relative py-24 md:py-32 overflow-hidden flex flex-col items-center bg-[#0f0f0f]"
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-    >
-      {/* Background eliminado — fondo limpio */}
-      
-      <div className="container relative z-10 mx-auto text-center mb-16 md:mb-20 px-6">
-        <div className="inline-flex items-center px-3 py-0.5 rounded-full border border-white/10 mb-4">
-          <span className="text-xs font-light tracking-wide text-white">Reputación</span>
+    <section ref={containerRef} className="py-24 md:py-32 relative bg-[#0f0f0f]">
+      <div className="max-w-[1300px] mx-auto px-6">
+        
+        <div className="mb-20 text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center px-3 py-0.5 rounded-full border border-white/10 mb-4">
+            <span className="text-xs font-light tracking-normal text-white">Testimonios</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6">
+            Lo que dicen nuestros clientes
+          </h2>
         </div>
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
-          Lo que dicen nuestros clientes
-        </h2>
-      </div>
 
-      <div className="relative w-full h-[400px] md:h-[450px] flex items-center justify-center perspective-[1200px]">
-        {testimonials.map((item, i) => (
-          <div
-            key={item.id}
-            ref={(el) => { cardsRef.current[i] = el }}
-            className="absolute w-[300px] md:w-[460px] h-[340px] md:h-[360px] rounded-[24px] border border-white/10 shadow-2xl backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-transparent flex flex-col p-8 md:p-10 text-left items-start justify-between overflow-hidden group"
-          >
-             {/* Decorative Huge Quote Mark */}
-             <div className="absolute -top-4 -left-2 text-[140px] leading-none text-white/5 font-serif pointer-events-none select-none">
-               "
-             </div>
-             
-             {/* 5 Stars */}
-             <div className="flex gap-1.5 mb-6 z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
+          {testimonials.map((t, i) => (
+            <div 
+              key={t.id} 
+              className="testimonial-card flex flex-col items-center text-center group h-full relative px-8 md:px-10 pb-12 md:pb-0"
+            >
+              {/* Vertical line separator (Desktop) */}
+              {i < testimonials.length - 1 && (
+                <div className="hidden md:block absolute right-0 top-[10%] w-[1px] h-[80%] bg-white/10"></div>
+              )}
+              
+              {/* Bottom line separator (Mobile) */}
+              {i < testimonials.length - 1 && (
+                <div className="md:hidden absolute bottom-0 left-1/4 w-1/2 h-[1px] bg-white/10"></div>
+              )}
+
+              {/* Initial Circle - Icon Style */}
+              <div className="w-16 h-16 rounded-full bg-gradient-to-r from-[#0b5cc5] to-[#08428c] flex items-center justify-center text-white mb-8 shadow-[0_4px_15px_rgba(11,92,197,0.3)] group-hover:scale-105 transition-transform duration-300">
+                <span className="text-xl font-bold">{t.name.charAt(0)}</span>
+              </div>
+
+              {/* Stars */}
+              <div className="flex gap-1 mb-6">
                 {[1, 2, 3, 4, 5].map((star) => (
-                  <svg key={star} className="w-4 h-4 md:w-5 md:h-5 text-[#f59e0b] fill-current" viewBox="0 0 24 24">
+                  <svg key={star} className="w-4 h-4 text-[#f59e0b] fill-current" viewBox="0 0 24 24">
                     <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                   </svg>
                 ))}
-             </div>
+              </div>
 
-             {/* Quote Text */}
-             <p className="text-gray-200 leading-relaxed text-[15px] md:text-[17px] font-medium z-10">
-                {item.text}
-             </p>
-             
-             {/* Bottom Profile Area */}
-             <div className="mt-8 flex items-center gap-4 w-full z-10 relative">
-               <div className="w-12 h-12 rounded-full border border-[#0b5cc5]/50 bg-gradient-to-tr from-[#08428c] to-[#0b5cc5] flex items-center justify-center text-white font-bold text-lg">
-                 {item.name.charAt(0)}
-               </div>
-               <div>
-                 <h4 className="text-white font-bold text-sm md:text-base">{item.name}</h4>
-                 <p className="text-[#0b5cc5] text-[11px] md:text-xs font-light tracking-wide mt-0.5">{item.company}</p>
-               </div>
-             </div>
-          </div>
-        ))}
-      </div>
+              {/* Quote Text */}
+              <p className="text-gray-300 leading-relaxed font-light text-[15px] mb-8 flex-1 italic">
+                {t.text}
+              </p>
 
-      {/* Elegant Nav Controls */}
-      <div className="flex gap-4 mt-16 relative z-10 items-center justify-center">
-        <button
-          onClick={rotateIndicesRight}
-          className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-transparent hover:bg-white flex-shrink-0 transition-colors group"
-        >
-          <svg className="w-5 h-5 text-white group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <button
-          onClick={rotateIndicesLeft}
-          className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-transparent hover:bg-white flex-shrink-0 transition-colors group"
-        >
-          <svg className="w-5 h-5 text-white group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+              {/* Attribution */}
+              <div className="mt-auto">
+                <h4 className="text-white font-bold text-base mb-1">{t.name}</h4>
+                <p className="text-[#0b5cc5] text-xs font-light tracking-wide">{t.company}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

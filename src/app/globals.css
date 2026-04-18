@@ -28,4 +28,15 @@
     @apply relative overflow-hidden transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] px-6 text-[18px] font-extralight;
     background: linear-gradient(135deg, #073c85 0%, #0f0f0f 100%);
   }
+
+  .highlight-main {
+    @apply relative inline-block z-10 px-2 mx-[-0.25em];
+  }
+
+  .highlight-main::after {
+    content: "";
+    @apply absolute bottom-0 -left-1.5 -right-1.5 h-[0.7em] bg-[#0b5cc5] -z-10 rounded-[2px] skew-x-[-12deg] opacity-60;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
 }

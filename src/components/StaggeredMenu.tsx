@@ -1,15 +1,44 @@
-// @ts-nocheck
 "use client";
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import './StaggeredMenu.css';
 
-export const StaggeredMenu = ({
+interface MenuItem {
+  label: string;
+  link: string;
+  ariaLabel?: string;
+}
+
+interface SocialItem {
+  label: string;
+  link: string;
+}
+
+interface StaggeredMenuProps {
+  position?: 'left' | 'right';
+  colors?: string[];
+  items?: MenuItem[];
+  socialItems?: SocialItem[];
+  displaySocials?: boolean;
+  displayItemNumbering?: boolean;
+  className?: string;
+  logoUrl?: string;
+  menuButtonColor?: string;
+  openMenuButtonColor?: string;
+  accentColor?: string;
+  changeMenuColorOnOpen?: boolean;
+  isFixed?: boolean;
+  closeOnClickAway?: boolean;
+  onMenuOpen?: () => void;
+  onMenuClose?: () => void;
+}
+
+export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   position = 'right',
   colors = ['#0b5cc5', '#08428c'],
-  items = [] as any[],
-  socialItems = [] as any[],
+  items = [] as MenuItem[],
+  socialItems = [] as SocialItem[],
   displaySocials = true,
   displayItemNumbering = true,
   className = '',
@@ -25,20 +54,20 @@ export const StaggeredMenu = ({
 }) => {
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
-  const panelRef = useRef(null);
-  const preLayersRef = useRef(null);
-  const preLayerElsRef = useRef([]);
+  const panelRef = useRef<HTMLElement>(null);
+  const preLayersRef = useRef<HTMLDivElement>(null);
+  const preLayerElsRef = useRef<Element[]>([]);
   
-  const line1Ref = useRef(null);
-  const line2Ref = useRef(null);
-  const line3Ref = useRef(null);
+  const line1Ref = useRef<HTMLSpanElement>(null);
+  const line2Ref = useRef<HTMLSpanElement>(null);
+  const line3Ref = useRef<HTMLSpanElement>(null);
 
-  const openTlRef = useRef(null);
-  const closeTweenRef = useRef(null);
-  const colorTweenRef = useRef(null);
-  const toggleBtnRef = useRef(null);
+  const openTlRef = useRef<gsap.core.Timeline | null>(null);
+  const closeTweenRef = useRef<gsap.core.Tween | null>(null);
+  const colorTweenRef = useRef<gsap.core.Tween | null>(null);
+  const toggleBtnRef = useRef<HTMLButtonElement>(null);
   const busyRef = useRef(false);
-  const itemEntranceTweenRef = useRef(null);
+  const itemEntranceTweenRef = useRef<gsap.core.Tween | null>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -225,7 +254,7 @@ export const StaggeredMenu = ({
     });
   }, [position]);
 
-  const animateIcon = useCallback(opening => {
+  const animateIcon = useCallback((opening: boolean) => {
     const l1 = line1Ref.current;
     const l2 = line2Ref.current;
     const l3 = line3Ref.current;
@@ -243,7 +272,7 @@ export const StaggeredMenu = ({
   }, []);
 
   const animateColor = useCallback(
-    opening => {
+    (opening: boolean) => {
       const btn = toggleBtnRef.current;
       if (!btn) return;
       colorTweenRef.current?.kill();
@@ -322,12 +351,12 @@ export const StaggeredMenu = ({
   React.useEffect(() => {
     if (!closeOnClickAway || !open) return;
 
-    const handleClickOutside = event => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (
         panelRef.current &&
-        !panelRef.current.contains(event.target) &&
+        !panelRef.current.contains(event.target as Node) &&
         toggleBtnRef.current &&
-        !toggleBtnRef.current.contains(event.target)
+        !toggleBtnRef.current.contains(event.target as Node)
       ) {
         closeMenu();
       }
@@ -351,7 +380,7 @@ export const StaggeredMenu = ({
       <div ref={preLayersRef} className="sm-prelayers" aria-hidden="true">
         {(() => {
           const raw = colors && colors.length ? colors.slice(0, 4) : ['#1e1e22', '#35353c'];
-          let arr = [...raw];
+          const arr = [...raw];
           if (arr.length >= 3) {
             const mid = Math.floor(arr.length / 2);
             arr.splice(mid, 1);

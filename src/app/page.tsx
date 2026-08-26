@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { TrustedBy } from "@/components/TrustedBy";
-import { Nosotros } from "@/components/Nosotros";
+import { Expertise } from "@/components/Expertise";
+import { SelectedWork } from "@/components/SelectedWork";
 
 import { Values } from "@/components/Values";
 import { Stats } from "@/components/Stats";
@@ -31,13 +31,13 @@ export default function Home() {
 
       {/* Main con fondo sólido ENCIMA del footer (z-index 1) */}
       <main
-        className="relative flex-1 flex flex-col bg-[#0f0f0f]"
+        className="site-grid relative flex-1 flex flex-col bg-[#0f0f0f]"
         style={{ zIndex: 1 }}
       >
         <Navbar />
         <Hero />
-        <TrustedBy />
-        <Nosotros />
+        <Expertise />
+        <SelectedWork />
         <Values />
         <Stats />
         <Services />

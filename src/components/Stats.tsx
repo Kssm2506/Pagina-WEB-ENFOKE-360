@@ -27,9 +27,9 @@ export function Stats() {
       );
 
       // Counters animation
-      const nums = gsap.utils.toArray(".stat-num");
-      nums.forEach((num: any) => {
-        const targetVal = parseFloat(num.getAttribute("data-val"));
+      const nums = gsap.utils.toArray(".stat-num") as HTMLElement[];
+      nums.forEach((num) => {
+        const targetVal = parseFloat(num.getAttribute("data-val") || "0");
         const isDecimal = targetVal % 1 !== 0;
         
         // Start at 0
@@ -46,7 +46,7 @@ export function Stats() {
           onUpdate() {
             num.innerHTML = isDecimal 
               ? Number(num.innerHTML).toFixed(1) 
-              : Math.round(Number(num.innerHTML));
+              : String(Math.round(Number(num.innerHTML)));
           }
         });
       });

@@ -5,7 +5,7 @@ import { SlGlobe, SlMagnifier, SlRocket, SlDiamond, SlPeople, SlBadge, SlArrowDo
 import Link from "next/link";
 
 interface IconType {
-  [key: string]: React.ComponentType<any>;
+  [key: string]: React.ComponentType<{ className?: string }>;
 }
 
 const icons: IconType = {

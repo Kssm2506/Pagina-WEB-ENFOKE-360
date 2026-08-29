@@ -1,17 +1,41 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import GlassmorphismCta from "@/components/ui/glassmorphism-cta";
 
-const brands = ["NEXA", "orbital", "NORTH", "vertex", "LUMEN"];
+const mailmanHeroImages = [
+  "https://framerusercontent.com/images/f5cZMGLCdGVRQu1DGkbvXmCaYKI.png",
+  "https://framerusercontent.com/images/Cb9RyL259ebvh6DF3aSj2OIg.png",
+  "https://framerusercontent.com/images/7uPLAyR8yfAvhUgTSkN9mjAIKNE.png",
+  "https://framerusercontent.com/images/cTEAZEfpkQZEdW4AHQAwZiJVVQ.png",
+  "https://framerusercontent.com/images/uhJcNt8zADTnu37HdGXoXkpA5QU.png",
+  "https://framerusercontent.com/images/8HvcovYXKLiNsaZQqncN3miqyQ.png",
+  "https://framerusercontent.com/images/nijbjG6KAMOUJpCkBraHa8FUU.png",
+  "https://framerusercontent.com/images/fOuRgG7JQPt3IoCpVBSyIIOz2XY.png",
+  "https://framerusercontent.com/images/YeqIGkNvrwvvMwkJdzaCkDiBs.png",
+];
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      const marqueeOffsets = [-420, -300, -460, -340, -400];
+      gsap.fromTo(
+        ".hero-mailman-column",
+        {
+          y: (index: number) => marqueeOffsets[index] + (index % 2 === 0 ? -280 : 280),
+        },
+        {
+          y: (index: number) => marqueeOffsets[index],
+          duration: 1.7,
+          stagger: 0.07,
+          ease: "power3.out",
+          delay: 0.05,
+        }
+      );
       gsap.fromTo(".hero-elem", { y: 32, opacity: 0 }, { y: 0, opacity: 1, duration: 0.85, stagger: 0.12, ease: "power3.out", delay: 0.1 });
     }, containerRef);
     return () => ctx.revert();
@@ -19,47 +43,40 @@ export function Hero() {
 
   return (
     <>
-      <section ref={containerRef} className="leadup-hero relative overflow-hidden pt-24 md:pt-24">
-        <div className="hero-radiance pointer-events-none absolute inset-x-0 bottom-0 h-[42%]" />
-        <div className="relative z-10 mx-auto grid min-h-[640px] max-w-[1150px] grid-cols-1 items-center gap-12 px-[10px] pb-8 lg:grid-cols-[1.2fr_.8fr] lg:gap-16">
-          <div className="max-w-[650px] pt-8 lg:pt-0">
-            <div className="hero-elem mb-9 flex items-center gap-4 text-sm font-medium text-white/90">
-              <span>Para empresas</span>
-              <span className="relative h-5 w-9 rounded-full bg-white/20"><span className="absolute left-1 top-1 h-3 w-3 rounded-full bg-white" /></span>
-              <span className="text-white/55">Para emprendedores</span>
+      <section ref={containerRef} className="leadup-hero relative min-h-screen overflow-hidden pt-24 md:pt-24">
+        <div className="hero-mailman-grid" aria-hidden="true">
+          {Array.from({ length: 5 }, (_, columnIndex) => (
+            <div key={columnIndex} className="hero-mailman-column">
+              {Array.from({ length: 5 }, (_, rowIndex) => {
+                const imageIndex = columnIndex + rowIndex * 5;
+                return (
+                  <div key={rowIndex} className="hero-mailman-cell">
+                    <div className="hero-mailman-tile">
+                      <img src={mailmanHeroImages[imageIndex % mailmanHeroImages.length]} alt="" />
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-            <h1 className="leadup-heading hero-elem max-w-[680px] text-white">
+          ))}
+        </div>
+        <div className="hero-top-fade pointer-events-none absolute inset-x-0 top-0 h-[55%] z-[1]" />
+        <div className="hero-bottom-fade pointer-events-none absolute inset-x-0 bottom-0 h-[55%] z-[1]" />
+        <div className="hero-dark-overlay pointer-events-none absolute inset-0 z-[2]" />
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-96px)] max-w-[1150px] items-center justify-center px-[10px] pb-8 text-center">
+          <div className="max-w-[1200px] pt-8 lg:pt-0">
+            <h1 className="leadup-heading hero-elem max-w-[1100px] text-white">
               Impulsamos tu visión y estrategia digital
             </h1>
-            <p className="hero-elem mt-6 max-w-[560px]">
+            <p className="hero-elem mx-auto mt-6 max-w-[650px]">
               <span className="leadup-description">Convertimos objetivos de negocio en experiencias digitales claras, medibles y listas para crecer.</span>
             </p>
-            <div className="hero-elem mt-10 flex flex-wrap items-center gap-6">
-              <Link href="#contacto" className="leadup-primary"><p className="leadup-primary-label">Agendar una llamada</p></Link>
-              <Link href="#servicios" className="leadup-secondary">Ver servicios <span aria-hidden="true">→</span></Link>
+            <div className="hero-elem mt-10 flex flex-wrap items-center justify-center gap-4">
+              <GlassmorphismCta href="#contacto" label="Agendar una llamada" />
+              <GlassmorphismCta href="#servicios" label="Ver servicios" speed="5s" shimmerColor="rgba(147,197,253,0.72)" />
             </div>
           </div>
 
-          <div className="hero-elem relative mx-auto w-full max-w-[456px] lg:self-start">
-            <div className="relative aspect-[.71] overflow-hidden rounded-[22px] bg-[#061d3b]">
-              <Image src="/images/leadup-hero-portrait.png" alt="Especialista de Enfoke 360" fill priority sizes="(max-width: 1024px) 80vw, 456px" className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#082425]/30 via-transparent to-transparent" />
-            </div>
-            <div className="absolute -bottom-2 left-6 right-6 rounded-[18px] border border-white/25 bg-[#061d3b]/80 p-6 text-white shadow-2xl backdrop-blur-md md:-bottom-3 md:left-7 md:right-7">
-              <div className="mb-4 flex items-start justify-between gap-4 text-sm font-medium leading-5"><span>Resultados medibles en cada etapa de tu crecimiento.</span><span className="text-[#66c5ff]">↗</span></div>
-              <svg viewBox="0 0 360 150" className="h-auto w-full" aria-label="Tendencia de crecimiento">
-                <path d="M12 120 C47 115, 54 94, 88 88 S132 74, 166 79 S215 54, 242 48 S285 27, 338 14" fill="none" stroke="white" strokeWidth="2" />
-                {[12, 88, 166, 242, 338].map((x, index) => <g key={x}><line x1={x} x2={x} y1={index === 4 ? 14 : [120, 88, 79, 48][index]} y2="140" stroke="white" strokeOpacity=".24" strokeDasharray="4 5" /><circle cx={x} cy={index === 4 ? 14 : [120, 88, 79, 48][index]} r="3.5" fill="white" /></g>)}
-              </svg>
-              <div className="mt-1 flex justify-between text-xs font-medium text-white/80"><span>Enero</span><span>Abril</span><span>Julio</span><span>Octubre</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="brand-strip relative z-10">
-        <div className="mx-auto flex max-w-[1000px] flex-wrap items-center justify-center gap-x-12 gap-y-7 px-6 py-12 text-[#59616b] md:justify-between">
-          {brands.map((brand, index) => <span key={brand} className={`brand-mark brand-mark-${index}`}>{brand}</span>)}
         </div>
       </section>
 

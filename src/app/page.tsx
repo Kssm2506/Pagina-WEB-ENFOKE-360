@@ -2,13 +2,9 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Expertise } from "@/components/Expertise";
 import { SelectedWork } from "@/components/SelectedWork";
+import { WhyChoose } from "@/components/WhyChoose";
 
 import { Values } from "@/components/Values";
-import { Stats } from "@/components/Stats";
-import { Services } from "@/components/Services";
-import { WorkingProcess } from "@/components/WorkingProcess";
-import { Testimonials } from "@/components/Testimonials";
-import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -17,7 +13,7 @@ export default function Home() {
    *
    * El footer es position:fixed; bottom:0; z-index:0  → siempre al fondo del viewport
    * El main es position:relative; z-index:1; bg sólido → tapa el footer mientras scrolleas
-   * Al terminar el main (último elemento Contact), hay un gap transparente abajo
+   * Al terminar el main, hay un gap transparente abajo
    * que tiene exactamente la altura del footer → eso crea el scroll adicional
    * que revela el footer completo al llegar al final.
    *
@@ -38,12 +34,8 @@ export default function Home() {
         <Hero />
         <Expertise />
         <SelectedWork />
+        <WhyChoose />
         <Values />
-        <Stats />
-        <Services />
-        <WorkingProcess />
-        <Testimonials />
-        <Contact />
       </main>
 
       {/*

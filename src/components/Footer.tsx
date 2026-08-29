@@ -41,7 +41,7 @@ export function Footer() {
   return (
     <footer
       id="site-footer"
-      className="fixed bottom-0 left-0 w-full bg-[#0b5cc5] overflow-hidden"
+      className="fixed bottom-0 left-0 w-full bg-[#09090b] overflow-hidden"
       style={{ zIndex: 0 }}
       aria-label="Footer"
     >

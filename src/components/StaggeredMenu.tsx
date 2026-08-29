@@ -75,7 +75,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       const preContainer = preLayersRef.current;
       if (!panel) return;
 
-      let preLayers = [];
+      let preLayers: Element[] = [];
       if (preContainer) {
         preLayers = Array.from(preContainer.querySelectorAll('.sm-prelayer'));
       }
@@ -373,7 +373,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   return (
     <div
       className={(className ? className + ' ' : '') + 'staggered-menu-wrapper block md:hidden' + (isFixed ? ' fixed-wrapper' : '')}
-      style={accentColor ? { '--sm-accent': accentColor } : undefined}
+      style={accentColor ? ({ '--sm-accent': accentColor } as React.CSSProperties) : undefined}
       data-position={position}
       data-open={open || undefined}
     >

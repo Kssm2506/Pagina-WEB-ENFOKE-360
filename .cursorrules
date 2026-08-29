@@ -1,0 +1,4 @@
+# Reglas del Navegador para el Agente
+- NUNCA intentes abrir ventanas de navegador autónomas o usar herramientas por defecto como 'open_browser_url'. Fallan con errores de red local (IP 127.0.0.1).
+- Usa SIEMPRE y de forma exclusiva las herramientas del servidor 'browser-mcp' para interactuar con la web.
+- Asume siempre que el usuario ya tiene la pestaña de 'http://localhost:3000' abierta y conectada manualmente mediante la extensión Browser MCP en Chrome.

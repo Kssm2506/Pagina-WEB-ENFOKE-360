@@ -8,17 +8,17 @@ const expertise = [
   {
     title: "Maximizá tus oportunidades de crecimiento",
     text: "Analizamos tus canales digitales para enfocar cada inversión donde puede generar mayor impacto.",
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=85",
+    image: "/images/expertise/enfoque-ek.webp",
   },
   {
     title: "Optimizá la experiencia de tu negocio",
     text: "Diseñamos recorridos claros que conectan tu propuesta de valor con las personas correctas.",
-    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
+    image: "/images/expertise/enfoque-banderilla.webp",
   },
   {
     title: "Construí una marca que se recuerde",
     text: "Creamos sistemas visuales y contenidos que fortalecen la relación con tu audiencia.",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=85",
+    image: "/images/expertise/enfoque-posts.webp",
   },
 ];
 
@@ -68,7 +68,13 @@ export function Expertise() {
 
             return (
               <article key={item.title} className="expertise-card group relative overflow-hidden rounded-[18px] bg-[#070807]">
-                <img src={item.image} alt="" className="absolute inset-0 h-full w-full object-cover" />
+                <img
+                  src={item.image}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-transparent" />
                 <div className="expertise-card-copy absolute inset-x-0 bottom-0 flex min-h-[145px] items-end gap-4 p-[22px]">
                   <div className="min-w-0 flex-1">
